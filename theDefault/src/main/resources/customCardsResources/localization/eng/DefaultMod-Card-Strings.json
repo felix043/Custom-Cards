@@ -49,5 +49,9 @@
   "customCards:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "customCards:Telephone": {
+    "NAME": "The Telephone",
+    "DESCRIPTION": "Deal !D! emotional damage"
   }
 }
