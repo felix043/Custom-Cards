@@ -19,9 +19,9 @@ public class Telephone extends AbstractDynamicCard {
 
     // STAT DECLARATION
     public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
-    private static final CardRarity RARITY = CardRarity.RARE; //  Up to you, I like auto-complete on these
-    private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
-    private static final CardType TYPE = CardType.ATTACK;       //
+    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardType TYPE = CardType.ATTACK;
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
 

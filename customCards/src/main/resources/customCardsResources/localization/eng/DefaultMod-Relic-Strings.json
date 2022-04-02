@@ -30,5 +30,12 @@
       ".",
       "Select a card to bottle for "
     ]
+  },
+  "customCards:RandomRelic": {
+    "NAME": "Random Relic",
+    "FLAVOR": "What could this taste like?",
+    "DESCRIPTIONS": [
+      "You will get stronger every turn"
+    ]
   }
 }
