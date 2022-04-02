@@ -52,6 +52,10 @@
   },
   "customCards:Telephone": {
     "NAME": "The Telephone",
-    "DESCRIPTION": "Deal !D! emotional damage"
+    "DESCRIPTION": "Deal !D! customCards:Emotional-damage emotional-damage customCards:Emotional_damage emotionaldamage"
+  },
+  "customCards:WhyAreWeStillHere": {
+    "NAME": "Why are we still here?",
+    "DESCRIPTION": "Gain !B! Block. Discard 4 cards at random"
   }
 }
