@@ -57,5 +57,9 @@
   "customCards:WhyAreWeStillHere": {
     "NAME": "Why are we still here?",
     "DESCRIPTION": "Gain !B! Block. Discard 4 cards at random"
+  },
+  "customCards:Blob": {
+    "NAME": "Blob",
+    "DESCRIPTION": "Deal !D! damage to everyone and apply 2 Vulnerable, 2 Poison and 2 Weakened"
   }
 }
