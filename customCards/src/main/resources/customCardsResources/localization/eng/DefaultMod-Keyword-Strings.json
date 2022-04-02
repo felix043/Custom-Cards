@@ -21,9 +21,7 @@
     "PROPER_NAME": "Emotional Damage",
     "NAMES": [
       "Emotional Damage",
-      "emotional-damage",
-      "emotional_damage",
-      "emotionaldamage"
+      "emotional_damage"
     ],
     "DESCRIPTION": "Ignores enemy armor"
   }
