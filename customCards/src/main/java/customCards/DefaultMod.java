@@ -23,7 +23,6 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import customCards.cards.AbstractDefaultCard;
 import customCards.characters.SEP;
-import customCards.characters.TheDefault;
 import customCards.events.IdentityCrisisEvent;
 import customCards.potions.PlaceholderPotion;
 import customCards.relics.*;
@@ -85,25 +84,21 @@ public class DefaultMod implements
     // Colors (RGB)
     // Character Color
     public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    public static final Color SEP_RED = CardHelper.getColor(255f, 0.0f, 0.0f);
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
-    public static final String THE_DEFAULT_SHOULDER_1 = "customCardsResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "customCardsResources/images/char/defaultCharacter/shoulder2.png";
 
     public static final String SEP_SHOULDER = "customCardsResources/images/char/SEP/SEPcharacter.png";
 
     // =============== INPUT TEXTURE LOCATION =================
-    public static final String THE_DEFAULT_CORPSE = "customCardsResources/images/char/defaultCharacter/corpse.png";
     public static final String SEP_CORPSE = "customCardsResources/images/char/SEP/SEPcorpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "customCardsResources/images/Badge.png";
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "customCardsResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "customCardsResources/images/char/defaultCharacter/skeleton.json";
 
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
@@ -126,8 +121,6 @@ public class DefaultMod implements
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "customCardsResources/images/1024/bg_power_default_gray.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "customCardsResources/images/1024/card_default_gray_orb.png";
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "customCardsResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "customCardsResources/images/charSelect/DefaultCharacterPortraitBG.png";
     private static final String SEP_BUTTON = "customCardsResources/images/charSelect/SEPButton.png";
     private static final String SEP_BG = "customCardsResources/images/charSelect/SEPbg.png";
     // Mod-settings settings. This is if you want an on/off savable button
@@ -171,10 +164,9 @@ public class DefaultMod implements
 
         logger.info("Done subscribing");
 
-        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + SEP.Enums.COLOR_SEPRED.toString());
 
-        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(SEP.Enums.COLOR_SEPRED, SEP_RED, SEP_RED, SEP_RED, SEP_RED, SEP_RED, SEP_RED, SEP_RED,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
@@ -308,14 +300,13 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + SEP.Enums.SEP.toString());
 
-        BaseMod.addCharacter(new TheDefault("the Default", TheDefault.Enums.THE_DEFAULT), THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DEFAULT);
 
         BaseMod.addCharacter(new SEP("Sep", SEP.Enums.SEP), SEP_BUTTON, SEP_BG, SEP.Enums.SEP);
 
         receiveEditPotions();
-        logger.info("Added " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Added " + SEP.Enums.SEP.toString());
     }
 
     // =============== / POST-INITIALIZE/ =================
@@ -373,7 +364,7 @@ public class DefaultMod implements
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
         AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
                 .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-                .playerClass(TheDefault.Enums.THE_DEFAULT) // Character specific event
+                .playerClass(SEP.Enums.SEP) // Character specific event
                 .create();
 
         // Add the event
@@ -394,7 +385,7 @@ public class DefaultMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefault.Enums.THE_DEFAULT);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, SEP.Enums.SEP);
 
         logger.info("Done editing potions");
     }
@@ -416,10 +407,10 @@ public class DefaultMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new RandomRelic(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), SEP.Enums.COLOR_SEPRED);
+        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), SEP.Enums.COLOR_SEPRED);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), SEP.Enums.COLOR_SEPRED);
+        BaseMod.addRelicToCustomPool(new RandomRelic(), SEP.Enums.COLOR_SEPRED);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);

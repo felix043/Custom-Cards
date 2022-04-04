@@ -1,7 +1,6 @@
 package customCards.characters;
 
 import basemod.abstracts.CustomPlayer;
-import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -28,7 +27,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 
 import static customCards.DefaultMod.*;
-import static customCards.characters.TheDefault.Enums.COLOR_GRAY;
 
 public class SEP extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
@@ -70,32 +68,28 @@ public class SEP extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "customCardsResources/images/char/defaultCharacter/orb/layer1.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer2.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer3.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer4.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer5.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer6.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer1d.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer2d.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer3d.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer4d.png",
-            "customCardsResources/images/char/defaultCharacter/orb/layer5d.png",};
+            "customCardsResources/images/char/SEP/orb/layer1.png",
+            "customCardsResources/images/char/SEP/orb/layer2.png",
+            "customCardsResources/images/char/SEP/orb/layer3.png",
+            "customCardsResources/images/char/SEP/orb/layer4.png",
+            "customCardsResources/images/char/SEP/orb/layer5.png",
+            "customCardsResources/images/char/SEP/orb/layer6.png",
+            "customCardsResources/images/char/SEP/orb/layer1d.png",
+            "customCardsResources/images/char/SEP/orb/layer2d.png",
+            "customCardsResources/images/char/SEP/orb/layer3d.png",
+            "customCardsResources/images/char/SEP/orb/layer4d.png",
+            "customCardsResources/images/char/SEP/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
     // =============== CHARACTER CLASS START =================
 
     public SEP(String name, PlayerClass setClass) {
-        super(name, setClass, orbTextures,
-                "customCardsResources/images/char/defaultCharacter/orb/vfx.png", null,
-                new SpriterAnimation(
-                        "customCardsResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
-
+        super(name, setClass, orbTextures, "customCardsResources/images/char/SEP/orb/vfx.png", (String) null, null);
 
         // =============== TEXTURES, ENERGY, LOADOUT =================
 
-        initializeClass(null, // required call to load textures and setup energy/loadout.
+        initializeClass("customCardsResources/images/char/SEP/SEPcharacter.png", // required call to load textures and setup energy/loadout.
                 // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
                 SEP_SHOULDER, // campfire pose
                 SEP_SHOULDER, // another campfire pose
@@ -190,7 +184,7 @@ public class SEP extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_GRAY;
+        return Enums.COLOR_SEPRED;
     }
 
     // Should return a color object to be used to color the trail of moving cards

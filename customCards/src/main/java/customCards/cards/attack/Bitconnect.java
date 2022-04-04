@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.TheDefault;
+import customCards.characters.SEP;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
 import static customCards.DefaultMod.makeCardPath;
@@ -20,7 +20,7 @@ public class Bitconnect extends AbstractDynamicCard {
     // TEXT DECLARATION
     public static final String ID = DefaultMod.makeID(Bitconnect.class.getSimpleName());
     public static final String IMG = makeCardPath("Bitconnect.gif");
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
     // STAT DECLARATION
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.TheDefault;
+import customCards.characters.SEP;
 import customCards.powers.TheCouncilPower;
 
 import static customCards.DefaultMod.makeCardPath;
@@ -26,7 +26,7 @@ public class TheCouncil extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
 
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;

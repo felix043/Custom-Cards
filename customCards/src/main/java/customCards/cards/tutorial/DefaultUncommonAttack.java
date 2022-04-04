@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.TheDefault;
+import customCards.characters.SEP;
 
 import static customCards.DefaultMod.makeCardPath;
 
@@ -33,7 +33,7 @@ public class DefaultUncommonAttack extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
 
     private static final int COST = 1;
     private static final int DAMAGE = 10;

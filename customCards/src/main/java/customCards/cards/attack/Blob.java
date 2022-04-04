@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.TheDefault;
+import customCards.characters.SEP;
 
 import static customCards.DefaultMod.makeCardPath;
 
@@ -21,7 +21,7 @@ public class Blob extends AbstractDynamicCard {
     // TEXT DECLARATION
     public static final String ID = DefaultMod.makeID(Blob.class.getSimpleName());
     public static final String IMG = makeCardPath("Blob.png");
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
 
     // STAT DECLARATION
     private static final CardRarity RARITY = CardRarity.COMMON;

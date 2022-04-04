@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.TheDefault;
+import customCards.characters.SEP;
 
 import static customCards.DefaultMod.makeCardPath;
 
@@ -41,7 +41,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
 
     private static final int COST = 1;
 

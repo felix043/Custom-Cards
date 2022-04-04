@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.TheDefault;
+import customCards.characters.SEP;
 import customCards.powers.TheProtagonistPower;
 
 import static customCards.DefaultMod.makeCardPath;
@@ -18,7 +18,7 @@ public class TheProtagonist extends AbstractDynamicCard {
     // TEXT DECLARATION 
     public static final String ID = DefaultMod.makeID(TheProtagonist.class.getSimpleName());
     public static final String IMG = makeCardPath("TheProtagonist.png");
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     // STAT DECLARATION
