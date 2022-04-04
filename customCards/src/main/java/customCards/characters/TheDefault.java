@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import customCards.DefaultMod;
-import customCards.cards.*;
+import customCards.cards.tutorial.*;
 import customCards.relics.DefaultClickableRelic;
 import customCards.relics.PlaceholderRelic;
 import customCards.relics.PlaceholderRelic2;

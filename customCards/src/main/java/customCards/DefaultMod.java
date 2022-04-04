@@ -30,6 +30,7 @@ import customCards.util.IDCheckDontTouchPls;
 import customCards.util.TextureLoader;
 import customCards.variables.DefaultCustomVariable;
 import customCards.variables.DefaultSecondMagicNumber;
+import customCards.variables.TheProtagonistVariable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -74,7 +75,8 @@ public class DefaultMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        AddAudioSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
@@ -208,6 +210,10 @@ public class DefaultMod implements
         return getModID() + "Resources/images/powers/" + resourcePath;
     }
 
+    public static String makeAudioPath(String resourcePath) {
+        return getModID() + "Resources/audio/" + resourcePath;
+    }
+
     // =============== /MAKE IMAGE PATHS/ =================
 
     // =============== /INPUT TEXTURE LOCATION/ =================
@@ -284,6 +290,13 @@ public class DefaultMod implements
 
 
     // =============== POST-INITIALIZE =================
+
+    @Override
+    public void receiveAddAudio() {
+        BaseMod.addAudio(makeID("HeHeHey"), makeAudioPath("HeHeHey.ogg"));
+        BaseMod.addAudio(makeID("Bitconnect"), makeAudioPath("Bitconnect.ogg"));
+        BaseMod.addAudio(makeID("SadTrombone"), makeAudioPath("SadTrombone.ogg"));
+    }
 
     @Override
     public void receiveEditCharacters() {
@@ -424,6 +437,7 @@ public class DefaultMod implements
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
+        BaseMod.addDynamicVariable(new TheProtagonistVariable());
 
         logger.info("Adding cards");
         // Add the cards

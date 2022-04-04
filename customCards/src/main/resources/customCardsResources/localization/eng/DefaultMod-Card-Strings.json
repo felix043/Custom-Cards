@@ -10,7 +10,7 @@
   "customCards:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! customCards:Keyword.",
-    "UPGRADE_DESCRIPTION": "Gain !M! customCards:Keywords."
+    "UPGRADE_DESCRIPTION": "Gain !M! customcards:Keywords."
   },
   "customCards:DefaultUncommonAttack": {
     "NAME": "Big slap",
@@ -22,8 +22,8 @@
   },
   "customCards:DefaultUncommonPower": {
     "NAME": "Weirdness",
-    "DESCRIPTION": "Gain X customCards:Keywords.",
-    "UPGRADE_DESCRIPTION": "Gain X +1 customCards:Keywords."
+    "DESCRIPTION": "Gain X customcards:Keywords.",
+    "UPGRADE_DESCRIPTION": "Gain X +1 customcards:Keywords."
   },
   "customCards:DefaultRareAttack": {
     "NAME": "TOUCH",
@@ -61,5 +61,47 @@
   "customCards:Blob": {
     "NAME": "Blob",
     "DESCRIPTION": "Deal !D! damage to everyone and apply 2 Vulnerable, 2 Poison and 2 Weakened"
+  },
+  "customCards:RadiationProtection": {
+    "NAME": "5G Protection",
+    "DESCRIPTION": "Gain 2 Dexterity and !B! Block"
+  },
+  "customCards:Balanced": {
+    "NAME": "Balanced",
+    "DESCRIPTION": "Deal !D! damage to everyone including yourself"
+  },
+  "customCards:Bitconnect": {
+    "NAME": "BITCONNEEEECT",
+    "DESCRIPTION": "Deal 70 times !D! damage NL Exhaust"
+  },
+  "customCards:FeatureRequest": {
+    "NAME": "Feature Request",
+    "DESCRIPTION": "Draw 5 cards and deal double damage next turn"
+  },
+  "customCards:LostInTranslation": {
+    "NAME": "Lost in Translation",
+    "DESCRIPTION": "What does this card do?"
+  },
+  "customCards:LowPolygon": {
+    "NAME": "Compiling Shaders",
+    "DESCRIPTION": "Deal !D! damage. NL Skip enemy turn. NL Ends your turn"
+  },
+  "customCards:TheCouncil": {
+    "NAME": "The Council",
+    "DESCRIPTION": "At the start of your turn, play 1 card. NL Gain 1 Dexterity for every card played.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, play 2 cards. NL Gain 1 Dexterity for every card played."
+  },
+  "customCards:NothingToSeeHere": {
+    "NAME": "Nothing to see here",
+    "DESCRIPTION": ""
+  },
+  "customCards:PatienceHasLimits": {
+    "NAME": "Patience has limits",
+    "DESCRIPTION": "If 15 or more turns have passed, kill all enemies NL (1% chance to backfire)"
+  },
+  "customCards:TheProtagonist": {
+    "NAME": "The Protagonist?",
+    "DESCRIPTION": "When you would die, heal to 30 % of max HP",
+    "UPGRADE_DESCRIPTION": "When you would die, heal to 50 % of max HP"
   }
 }

@@ -1,0 +1,67 @@
+package customCards.cards.attack;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import customCards.DefaultMod;
+import customCards.cards.AbstractDynamicCard;
+import customCards.characters.TheDefault;
+
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
+import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+
+public class Bitconnect extends AbstractDynamicCard {
+
+    // TEXT DECLARATION
+    public static final String ID = DefaultMod.makeID(Bitconnect.class.getSimpleName());
+    public static final String IMG = makeCardPath("Bitconnect.gif");
+    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    // STAT DECLARATION
+    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardType TYPE = CardType.ATTACK;
+    private static final int COST = 3;
+    private static final int UPGRADED_COST = 3;
+
+    private static final int DAMAGE = 1;
+    private static final int UPGRADE_PLUS_DMG = 1;
+
+    public Bitconnect() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        baseDamage = DAMAGE;
+        this.exhaust = true;
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        CardCrawlGame.sound.play(makeID("Bitconnect"));
+        for (int i = 0; i < 35; i++) {
+            actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        }
+        //todo check
+        for (int i = 0; i < 35 / 2; i++) {
+            actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        }
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        CardCrawlGame.sound.play(makeID("HeHeHey"));
+        super.triggerWhenDrawn();
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeName();
+            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeBaseCost(UPGRADED_COST);
+            initializeDescription();
+        }
+    }
+}

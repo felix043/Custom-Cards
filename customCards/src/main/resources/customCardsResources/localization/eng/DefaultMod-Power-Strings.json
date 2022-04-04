@@ -14,5 +14,19 @@
       " enemy.",
       " enemies."
     ]
+  },
+  "customCards:TheCouncilPower": {
+    "NAME": "The Council",
+    "DESCRIPTIONS": [
+      "At the start of your turn, play ",
+      " card.",
+      " cards."
+    ]
+  },
+  "customCards:TheProtagonistPower": {
+    "NAME": "The Protagonist",
+    "DESCRIPTIONS": [
+      "When you would die, just don't"
+    ]
   }
 }
