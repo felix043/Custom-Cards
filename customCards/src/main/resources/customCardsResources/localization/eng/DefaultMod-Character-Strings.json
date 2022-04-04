@@ -9,5 +9,16 @@
       "NL You TOUCH the heart.",
       "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
     ]
+  },
+  "customCards:SEP": {
+    "NAMES": [
+      "Sep",
+      "SEP"
+    ],
+    "TEXT": [
+      "After a long day of working, Sep falls victim to a nightmare about feature request, service desk and the accursed telephone. NL Help Sep to fight off his enemies and guide him to the exit of this world of horror!",
+      "NL You TOUCH the heart.",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+    ]
   }
 }

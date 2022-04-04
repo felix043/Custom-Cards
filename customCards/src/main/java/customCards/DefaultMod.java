@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import customCards.cards.AbstractDefaultCard;
+import customCards.characters.SEP;
 import customCards.characters.TheDefault;
 import customCards.events.IdentityCrisisEvent;
 import customCards.potions.PlaceholderPotion;
@@ -88,11 +89,16 @@ public class DefaultMod implements
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
+
     public static final String THE_DEFAULT_SHOULDER_1 = "customCardsResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "customCardsResources/images/char/defaultCharacter/shoulder2.png";
 
+    public static final String SEP_SHOULDER = "customCardsResources/images/char/SEP/SEPcharacter.png";
+
     // =============== INPUT TEXTURE LOCATION =================
     public static final String THE_DEFAULT_CORPSE = "customCardsResources/images/char/defaultCharacter/corpse.png";
+    public static final String SEP_CORPSE = "customCardsResources/images/char/SEP/SEPcorpse.png";
+
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "customCardsResources/images/Badge.png";
     // Atlas and JSON files for the Animations
@@ -122,6 +128,8 @@ public class DefaultMod implements
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "customCardsResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "customCardsResources/images/charSelect/DefaultCharacterPortraitBG.png";
+    private static final String SEP_BUTTON = "customCardsResources/images/charSelect/SEPButton.png";
+    private static final String SEP_BG = "customCardsResources/images/charSelect/SEPbg.png";
     // Mod-settings settings. This is if you want an on/off savable button
     public static Properties theDefaultDefaultSettings = new Properties();
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
@@ -302,8 +310,9 @@ public class DefaultMod implements
     public void receiveEditCharacters() {
         logger.info("Beginning to edit characters. " + "Add " + TheDefault.Enums.THE_DEFAULT.toString());
 
-        BaseMod.addCharacter(new TheDefault("the Default", TheDefault.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DEFAULT);
+        BaseMod.addCharacter(new TheDefault("the Default", TheDefault.Enums.THE_DEFAULT), THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DEFAULT);
+
+        BaseMod.addCharacter(new SEP("Sep", SEP.Enums.SEP), SEP_BUTTON, SEP_BG, SEP.Enums.SEP);
 
         receiveEditPotions();
         logger.info("Added " + TheDefault.Enums.THE_DEFAULT.toString());
