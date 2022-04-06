@@ -103,5 +103,9 @@
     "NAME": "The Protagonist?",
     "DESCRIPTION": "When you would die, heal to 30 % of max HP",
     "UPGRADE_DESCRIPTION": "When you would die, heal to 50 % of max HP"
+  },
+  "customCards:TelephoneService": {
+    "NAME": "Telephone Service",
+    "DESCRIPTION": "Take up the phone, I know you're there NL Exhaust"
   }
 }

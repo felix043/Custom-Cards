@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import customCards.DefaultMod;
 import customCards.cards.tutorial.*;
+import customCards.orbs.*;
 import customCards.relics.DefaultClickableRelic;
 import customCards.relics.PlaceholderRelic;
 import customCards.relics.PlaceholderRelic2;
@@ -47,10 +48,12 @@ public class SEP extends CustomPlayer {
     // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;
-    public static final int STARTING_HP = 75;
-    public static final int MAX_HP = 75;
-    public static final int STARTING_GOLD = 99;
-    public static final int CARD_DRAW = 9;
+    public static final int STARTING_HP = 69;
+    public static final int MAX_HP = 69;
+    public static final int STARTING_GOLD = 420;
+    public static final int CARD_DRAW = 8;
+    public static final int ORB_SLOTS = 1;
+    public static int COUNTER = 0;
 
     // =============== /BASE STATS/ =================
 
@@ -83,7 +86,6 @@ public class SEP extends CustomPlayer {
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
     // =============== CHARACTER CLASS START =================
-
     public SEP(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures, "customCardsResources/images/char/SEP/orb/vfx.png", (String) null, null);
 
@@ -114,8 +116,41 @@ public class SEP extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                STARTING_HP, MAX_HP, 0, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
+                STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
                 getStartingDeck(), false);
+    }
+
+    @Override
+    public void applyStartOfTurnPreDrawCards() {
+        rotateDay();
+    }
+
+    @Override
+    public void preBattlePrep() {
+        super.preBattlePrep();
+        rotateDay();
+    }
+
+    public void rotateDay() {
+        switch (COUNTER) {
+            case 1:
+                channelOrb(new MondayOrb());
+                break;
+            case 2:
+                channelOrb(new TuesdayOrb());
+                break;
+            case 3:
+                channelOrb(new WednesdayOrb());
+                break;
+            case 4:
+                channelOrb(new ThursdayOrb());
+                break;
+            case 5:
+                channelOrb(new FridayOrb());
+                COUNTER = 0;
+                break;
+        }
+        COUNTER++;
     }
 
     // Starting Deck
@@ -163,9 +198,8 @@ public class SEP extends CustomPlayer {
     // character Select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
-        CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f); // Sound Effect
-        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
-                false); // Screen Effect
+        CardCrawlGame.sound.play(makeID("WasupWasup"));
+        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.LONG, false);
     }
 
     // character Select on-button-press sound effect
@@ -178,7 +212,7 @@ public class SEP extends CustomPlayer {
     // Ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
     @Override
     public int getAscensionMaxHPLoss() {
-        return 0;
+        return 5;
     }
 
     // Should return the card color enum to be associated with your character.

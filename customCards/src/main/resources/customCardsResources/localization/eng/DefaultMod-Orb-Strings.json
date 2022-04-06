@@ -8,5 +8,35 @@
       " NL #yEvoke: Deal #b",
       " damage to all enemies."
     ]
+  },
+  "customCards:MondayOrb": {
+    "NAME": "Monday Orb",
+    "DESCRIPTION": [
+      "#yPassive: Week just started. You're getting into your work. NL No status effects"
+    ]
+  },
+  "customCards:TuesdayOrb": {
+    "NAME": "Tuesday Orb",
+    "DESCRIPTION": [
+      "#yPassive: You feel productive and plan ahead. NL Scry 4"
+    ]
+  },
+  "customCards:WednesdayOrb": {
+    "NAME": "Wednesday Orb",
+    "DESCRIPTION": [
+      "#yPassive: TELEPHONE SERVICE DAY NL Gain 2 Telephone Service cards"
+    ]
+  },
+  "customCards:ThursdayOrb": {
+    "NAME": "Thursday Orb",
+    "DESCRIPTION": [
+      "#yPassive: It's intern day and you feel free. NL Gain 2 [E]"
+    ]
+  },
+  "customCards:FridayOrb": {
+    "NAME": "Friday Orb",
+    "DESCRIPTION": [
+      "#yPassive: Long have you waited. Go enjoy your weekend. NL Gain 1 Strength, Dexterity and draw 3 cards"
+    ]
   }
 }

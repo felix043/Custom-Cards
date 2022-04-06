@@ -296,6 +296,7 @@ public class DefaultMod implements
         BaseMod.addAudio(makeID("HeHeHey"), makeAudioPath("HeHeHey.ogg"));
         BaseMod.addAudio(makeID("Bitconnect"), makeAudioPath("Bitconnect.ogg"));
         BaseMod.addAudio(makeID("SadTrombone"), makeAudioPath("SadTrombone.ogg"));
+        BaseMod.addAudio(makeID("WasupWasup"), makeAudioPath("WasupWasup.ogg"));
     }
 
     @Override
