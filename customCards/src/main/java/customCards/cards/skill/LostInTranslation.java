@@ -3,13 +3,12 @@ package customCards.cards.skill;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.PlayTopCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
 import customCards.characters.SEP;
 
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
 import static customCards.DefaultMod.makeCardPath;
 
 public class LostInTranslation extends AbstractDynamicCard {
@@ -37,7 +36,7 @@ public class LostInTranslation extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < TIMES; i++) {
-            actionManager.addToBottom(new PlayTopCardAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), true));
+            actionManager.addToBottom(new PlayTopCardAction(getCurrRoom().monsters.getRandomMonster(null, true, cardRandomRng), true));
         }
         actionManager.addToBottom(new DiscardAction(p, p, 10, true, true));
     }

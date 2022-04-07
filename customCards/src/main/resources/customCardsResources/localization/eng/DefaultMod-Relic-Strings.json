@@ -37,5 +37,12 @@
     "DESCRIPTIONS": [
       "You will get stronger every turn"
     ]
+  },
+  "customCards:Overworked": {
+    "NAME": "Overworked",
+    "FLAVOR": "Why you running?!",
+    "DESCRIPTIONS": [
+      "Gain 1 point every not skipped day NL #y-5: Exhaust 3 cards at random NL #y5: Draw 1 card NL #y10: Play 3 cards and gain 2 Confused"
+    ]
   }
 }

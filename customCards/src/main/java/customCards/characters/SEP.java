@@ -1,6 +1,8 @@
 package customCards.characters;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
+import basemod.abstracts.CustomSavableRaw;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -20,12 +22,14 @@ import customCards.DefaultMod;
 import customCards.cards.tutorial.*;
 import customCards.orbs.*;
 import customCards.relics.DefaultClickableRelic;
+import customCards.relics.Overworked;
 import customCards.relics.PlaceholderRelic;
 import customCards.relics.PlaceholderRelic2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import static customCards.DefaultMod.*;
 
@@ -53,7 +57,6 @@ public class SEP extends CustomPlayer {
     public static final int STARTING_GOLD = 420;
     public static final int CARD_DRAW = 8;
     public static final int ORB_SLOTS = 1;
-    public static int COUNTER = 0;
 
     // =============== /BASE STATS/ =================
 
@@ -100,7 +103,6 @@ public class SEP extends CustomPlayer {
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 
-
         // =============== TEXT BUBBLE LOCATION =================
 
         dialogX = (drawX + 0.0F * Settings.scale); // set location for text bubbles
@@ -122,16 +124,22 @@ public class SEP extends CustomPlayer {
 
     @Override
     public void applyStartOfTurnPreDrawCards() {
+        COUNTER++;
         rotateDay();
     }
 
     @Override
     public void preBattlePrep() {
         super.preBattlePrep();
+        if (COUNTER == 0) {
+            COUNTER = 1;
+        }
         rotateDay();
     }
 
     public void rotateDay() {
+        Map<String, CustomSavableRaw> saveFields = BaseMod.getSaveFields();
+        CustomSavableRaw count = saveFields.get("COUNT");
         switch (COUNTER) {
             case 1:
                 channelOrb(new MondayOrb());
@@ -150,7 +158,6 @@ public class SEP extends CustomPlayer {
                 COUNTER = 0;
                 break;
         }
-        COUNTER++;
     }
 
     // Starting Deck
@@ -185,12 +192,14 @@ public class SEP extends CustomPlayer {
         retVal.add(PlaceholderRelic.ID);
         retVal.add(PlaceholderRelic2.ID);
         retVal.add(DefaultClickableRelic.ID);
+        retVal.add(Overworked.ID);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
         UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        UnlockTracker.markRelicAsSeen(Overworked.ID);
 
         return retVal;
     }

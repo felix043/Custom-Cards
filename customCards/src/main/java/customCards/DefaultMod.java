@@ -4,6 +4,7 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
+import basemod.abstracts.CustomSavable;
 import basemod.eventUtil.AddEventParams;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -39,35 +40,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
-//TODO: DON'T MASS RENAME/REFACTOR
-//TODO: DON'T MASS RENAME/REFACTOR
-//TODO: DON'T MASS RENAME/REFACTOR
-//TODO: DON'T MASS RENAME/REFACTOR
-// Please don't just mass replace "theDefault" with "yourMod" everywhere.
-// It'll be a bigger pain for you. You only need to replace it in 4 places.
-// I comment those places below, under the place where you set your ID.
-
-//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
-// Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Scroll down in this file. Change the ID from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces). Dw, you'll see it.
-// In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault", and change to "yourmodname" rather than "thedefault".
-// You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories, and press alt+c to make the replace case sensitive (Be careful.).
-// Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
-// After you sorta get the hang of how to make cards, check out the card template which will make your life easier
-
-/*
- * With that out of the way:
- * Welcome to this super over-commented Slay the Spire modding base.
- * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
- * cards, relics), this is a good starting point.
- * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, couple of relics, etc.
- * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
- * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
- * Feel free to use this in any way you like, of course. MIT licence applies. Happy modding!
- *
- * And pls. Read the comments.
- */
-
 @SpireInitializer
 public class DefaultMod implements
         EditCardsSubscriber,
@@ -98,14 +70,7 @@ public class DefaultMod implements
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "customCardsResources/images/Badge.png";
-    // Atlas and JSON files for the Animations
 
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Custom Mod";
     private static final String AUTHOR = "felix043"; // And pretty soon - You!
@@ -128,6 +93,7 @@ public class DefaultMod implements
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
     private static String modID;
 
+    public static int COUNTER;
     // =============== MAKE IMAGE PATHS =================
 
     public DefaultMod() {
@@ -146,21 +112,6 @@ public class DefaultMod implements
       */
 
         setModID("customCards");
-        // cool
-        // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
-
-        // 1. Go to your resources folder in the project panel, and refactor> rename theDefaultResources to
-        // yourModIDResources.
-
-        // 2. Click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project) and press alt+c (or mark the match case option)
-        // replace all instances of theDefault with yourModID, and all instances of thedefault with yourmodid (the same but all lowercase).
-        // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
-        // It's important that the mod ID prefix for keywords used in the cards descriptions is lowercase!
-
-        // 3. Scroll down (or search for "ADD CARDS") till you reach the ADD CARDS section, and follow the TODO instructions
-
-        // 4. FINALLY and most importantly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
-        // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
 
         logger.info("Done subscribing");
 
@@ -172,6 +123,7 @@ public class DefaultMod implements
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
 
         logger.info("Done creating the color");
+
 
 
         logger.info("Adding mod settings");
@@ -291,6 +243,7 @@ public class DefaultMod implements
 
     // =============== POST-INITIALIZE =================
 
+
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(makeID("HeHeHey"), makeAudioPath("HeHeHey.ogg"));
@@ -318,6 +271,22 @@ public class DefaultMod implements
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
 
+        BaseMod.addSaveField("COUNT", new CustomSavable<Integer>() {
+            private int test;
+
+            @Override
+            public Integer onSave() {
+                return test;
+            }
+
+            @Override
+            public void onLoad(Integer saved) {
+                if (saved == null) {
+                    return;
+                }
+                test = saved;
+            }
+        });
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
 
@@ -412,6 +381,7 @@ public class DefaultMod implements
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), SEP.Enums.COLOR_SEPRED);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), SEP.Enums.COLOR_SEPRED);
         BaseMod.addRelicToCustomPool(new RandomRelic(), SEP.Enums.COLOR_SEPRED);
+        BaseMod.addRelicToCustomPool(new Overworked(), SEP.Enums.COLOR_SEPRED);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);

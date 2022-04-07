@@ -100,12 +100,24 @@
     "DESCRIPTION": "If 15 or more turns have passed, kill all enemies NL (1% chance to backfire)"
   },
   "customCards:TheProtagonist": {
-    "NAME": "The Protagonist?",
+    "NAME": "The Protagonist(?)",
     "DESCRIPTION": "When you would die, heal to 30 % of max HP",
     "UPGRADE_DESCRIPTION": "When you would die, heal to 50 % of max HP"
   },
   "customCards:TelephoneService": {
     "NAME": "Telephone Service",
     "DESCRIPTION": "Take up the phone, I know you're there NL Exhaust"
+  },
+  "customCards:SkipWorkDay": {
+    "NAME": "Skip Workday",
+    "DESCRIPTION": "Gain !B! Block and skip 1 day"
+  },
+  "customCards:Confused": {
+    "NAME": "Confused",
+    "DESCRIPTION": "Thinking... NL Ethereal"
+  },
+  "customCards:BigBrainEnergy": {
+    "NAME": "Big Brain Energy",
+    "DESCRIPTION": "Draw 1 card and work overtime"
   }
 }
