@@ -1,11 +1,14 @@
 package customCards.util;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import customCards.DefaultMod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 // Thank you Blank The Evil!
@@ -47,5 +50,18 @@ public class TextureLoader {
         Texture texture = new Texture(textureString);
         texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
         textures.put(textureString, texture);
+    }
+
+    public static String getAnimatedCardTextures(final String cardName) throws FileNotFoundException {
+        String fileName = DefaultMod.makeCardPath(cardName + ".png");
+
+        if (!testTexture(fileName)) {
+            throw new FileNotFoundException(fileName + " was not found.");
+        }
+        return fileName;
+    }
+
+    public static boolean testTexture(String filePath) {
+        return Gdx.files.internal(filePath).exists();
     }
 }

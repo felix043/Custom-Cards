@@ -3,6 +3,7 @@ package customCards.cards.attack;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
@@ -10,6 +11,7 @@ import customCards.cards.AbstractDynamicCard;
 import customCards.characters.SEP;
 
 import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
 
 public class Telephone extends AbstractDynamicCard {
 
@@ -35,6 +37,7 @@ public class Telephone extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        CardCrawlGame.sound.play(makeID("EmotionalDamage"));
         AbstractDungeon.actionManager.addToBottom(new LoseHPAction(m, p, damage, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 

@@ -12,16 +12,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import customCards.actions.EPSanimate;
 import customCards.cards.AbstractDefaultCard;
 import customCards.characters.SEP;
 import customCards.events.IdentityCrisisEvent;
@@ -48,7 +52,7 @@ public class DefaultMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-        AddAudioSubscriber {
+        AddAudioSubscriber, PreRoomRenderSubscriber, PreStartGameSubscriber, OnStartBattleSubscriber, PostBattleSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
@@ -166,6 +170,10 @@ public class DefaultMod implements
         return getModID() + "Resources/audio/" + resourcePath;
     }
 
+    public static String makeAnimationPath(String resourcePath) {
+        return getModID() + "Resources/images/animations/" + resourcePath;
+    }
+
     // =============== /MAKE IMAGE PATHS/ =================
 
     // =============== /INPUT TEXTURE LOCATION/ =================
@@ -250,6 +258,8 @@ public class DefaultMod implements
         BaseMod.addAudio(makeID("Bitconnect"), makeAudioPath("Bitconnect.ogg"));
         BaseMod.addAudio(makeID("SadTrombone"), makeAudioPath("SadTrombone.ogg"));
         BaseMod.addAudio(makeID("WasupWasup"), makeAudioPath("WasupWasup.ogg"));
+        BaseMod.addAudio(makeID("ShootingStar"), makeAudioPath("ShootingStar.ogg"));
+        BaseMod.addAudio(makeID("EmotionalDamage"), makeAudioPath("EmotionalDamage.ogg"));
     }
 
     @Override
@@ -287,6 +297,9 @@ public class DefaultMod implements
                 test = saved;
             }
         });
+
+        epSanimate = new EPSanimate();
+
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
 
@@ -498,5 +511,29 @@ public class DefaultMod implements
                 //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other cards that use that word)
             }
         }
+    }
+
+    private EPSanimate epSanimate;
+    public static boolean drawStellarUI = false;
+
+    @Override
+    public void receivePreRoomRender(SpriteBatch spriteBatch) {
+        epSanimate.addShootingStars(15);
+        epSanimate.render(spriteBatch, AbstractDungeon.getCurrRoom() == null || !drawStellarUI || AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT);
+    }
+
+    @Override
+    public void receivePreStartGame() {
+        drawStellarUI = false;
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
+//        drawStellarUI = true;
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        drawStellarUI = false;
     }
 }

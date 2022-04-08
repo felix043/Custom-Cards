@@ -17,11 +17,12 @@ import static customCards.DefaultMod.makeID;
 public class Bitconnect extends AbstractDynamicCard {
 
     // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(Bitconnect.class.getSimpleName());
-    public static final String IMG = makeCardPath("Bitconnect.gif");
+    public static final String NAME = Bitconnect.class.getSimpleName();
+    public static final String ID = DefaultMod.makeID(NAME);
+    public static final String IMG = makeCardPath("Bitconnect.png");
     public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
     // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     private static final int COST = 3;
@@ -31,7 +32,8 @@ public class Bitconnect extends AbstractDynamicCard {
     private static final int UPGRADE_PLUS_DMG = 1;
 
     public Bitconnect() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, NAME, TYPE, COLOR, RARITY, TARGET);
+        loadFrames(NAME, 150, 0.04F);
         baseDamage = DAMAGE;
         this.exhaust = true;
     }

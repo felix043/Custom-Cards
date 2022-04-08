@@ -119,5 +119,9 @@
   "customCards:BigBrainEnergy": {
     "NAME": "Big Brain Energy",
     "DESCRIPTION": "Draw 1 card and work overtime"
+  },
+  "customCards:ShootingStar": {
+    "NAME": "Starscourge",
+    "DESCRIPTION": "Finishing move of Sep"
   }
 }
