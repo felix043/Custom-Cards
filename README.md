@@ -1,3 +1,5 @@
+*Bitconeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeccccccct.......*
+
 # StS-Default Mod Base
 
 Welcome to this extremely over-commented Slay the Spire modding base. 
@@ -50,3 +52,5 @@ https://mega.nz/#F!gfpgTCyK!2oFOjVFKyOreKv7zdY1fEQ
 (If you want to contribute to this collection feel free to send me a message through [#modding](https://www.megacrit.com/) or a github issue.)
 
 ---
+
+Wasa wasa wasa wasuuuuuupp, bitconeeeeeeect
