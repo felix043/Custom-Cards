@@ -8,7 +8,7 @@
     <artifactId>customCards
     </artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>Custom Cards</name>
-    <version>0.0.2</version>
+    <version>1.0.0</version>
     <description>This is a mod containing custom cards</description>
 
     <properties>
