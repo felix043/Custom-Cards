@@ -12,14 +12,13 @@ import customCards.cards.CardInfo;
 import customCards.characters.SEP;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
-import static customCards.DefaultMod.makeCardPath;
 import static customCards.DefaultMod.makeID;
 
 public class Bitconnect extends AbstractDynamicCard {
 
     private final static CardInfo cardInfo = new CardInfo(
             makeID("Bitconnect"),
-            "BitConnect", //C: Image loads, c: Text and description loads
+            "BitConnecta", //c: Text and description loads, Any other name: Image loads
             3,
             CardType.ATTACK,
             CardTarget.ENEMY,
@@ -29,7 +28,7 @@ public class Bitconnect extends AbstractDynamicCard {
     // TEXT DECLARATION
     public static final String NAME = Bitconnect.class.getSimpleName();
     public static final String ID = DefaultMod.makeID(NAME);
-    public static final String IMG = makeCardPath("Bitconnect.png");
+    //    public static final String IMG = makeCardPath("Bitconnecta.png");
     public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
     // STAT DECLARATION
     private static final CardRarity RARITY = CardRarity.RARE;

@@ -8,12 +8,10 @@ import customCards.characters.SEP;
 import customCards.patches.AnimatedCardsPatch;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
-import static customCards.DefaultMod.makeID;
 import static customCards.util.TextureLoader.getAnimatedCardTextures;
 import static customCards.util.TextureLoader.getCardTextureString;
 
 public abstract class AbstractDynamicCard extends AbstractDefaultCard {
-
 
     public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
     protected CardStrings cardStrings;
@@ -46,11 +44,11 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
 
     //
     public AbstractDynamicCard(CardInfo cardInfo, boolean upgradesDescription) {
-        this(cardInfo.cardName, cardInfo.cardCost, cardInfo.cardType, cardInfo.cardTarget, cardInfo.cardRarity, upgradesDescription);
+        this(cardInfo.cardId, cardInfo.cardName, cardInfo.cardCost, cardInfo.cardType, cardInfo.cardTarget, cardInfo.cardRarity, upgradesDescription);
     }
 
-    public AbstractDynamicCard(String cardName, int cost, CardType cardType, CardTarget target, CardRarity rarity, boolean upgradesDescription) {
-        super(makeID(cardName), cardName, getCardTextureString(cardName), cost, languagePack.getCardStrings(makeID(cardName)).DESCRIPTION, cardType, COLOR, rarity, target);
+    public AbstractDynamicCard(String cardId, String cardName, int cost, CardType cardType, CardTarget target, CardRarity rarity, boolean upgradesDescription) {
+        super(cardId, cardName, getCardTextureString(cardName), cost, languagePack.getCardStrings(cardId).DESCRIPTION, cardType, COLOR, rarity, target);
 
         cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
 
