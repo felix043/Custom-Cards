@@ -13,8 +13,8 @@ import static customCards.util.TextureLoader.getCardTextureString;
 public class NothingToSeeHere extends AbstractDynamicCard {
 
     private final static CardInfo cardInfo = new CardInfo(
-            makeID("LostInTranslation"),
-            "LostInTranslation",
+            makeID("NothingToSeeHere"),
+            "NothingToSeeHere",
             0,
             0,
             COLOR_SEPRED,
