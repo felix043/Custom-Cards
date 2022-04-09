@@ -26,7 +26,7 @@ public class PatienceHasLimits extends AbstractDynamicCard {
             CardRarity.COMMON
     );
 
-    private static final int TURNS = 15;
+    private static final int TURNS = 10;
     private static int COUNTER = 0;
 
     public PatienceHasLimits() {

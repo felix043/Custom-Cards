@@ -59,7 +59,7 @@ public class Overworked extends CustomRelic implements CustomSavable<Integer>, O
             flash();
             actionManager.addToBottom(new ExhaustAction(1, true));
         }
-        setCounter(this.counter + 2);
+        setCounter(this.counter + 1);
     }
 
     @Override

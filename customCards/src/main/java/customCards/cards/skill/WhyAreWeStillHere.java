@@ -26,7 +26,7 @@ public class WhyAreWeStillHere extends AbstractDynamicCard {
     );
 
     private static final int BLOCK = 15;
-    private static final int UPGRADE_PLUS_BLOCK = 30;
+    private static final int UPGRADE_PLUS_BLOCK = 15;
 
     public WhyAreWeStillHere() {
         super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);

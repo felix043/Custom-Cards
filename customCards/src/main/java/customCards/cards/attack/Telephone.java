@@ -26,7 +26,7 @@ public class Telephone extends AbstractDynamicCard {
             CardRarity.RARE
     );
 
-    private static final int DAMAGE = 10;
+    private static final int DAMAGE = 15;
     private static final int UPGRADE_PLUS_DMG = 15;
 
     public Telephone() {
