@@ -1,6 +1,7 @@
 package customCards.util;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.utils.GdxRuntimeException;
@@ -63,5 +64,16 @@ public class TextureLoader {
 
     public static boolean testTexture(String filePath) {
         return Gdx.files.internal(filePath).exists();
+    }
+
+    public static String getCardTextureString(final String cardName) {
+        String textureString = DefaultMod.makeCardPath(cardName + ".png");
+
+        FileHandle h = Gdx.files.internal(textureString);
+        if (!h.exists()) {
+            textureString = DefaultMod.makeCardPath("NothingToSeeHere.png");
+        }
+
+        return textureString;
     }
 }

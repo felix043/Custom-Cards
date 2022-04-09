@@ -7,15 +7,13 @@ import customCards.DefaultMod;
 import customCards.characters.SEP;
 import customCards.patches.AnimatedCardsPatch;
 
-import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static customCards.DefaultMod.makeID;
 import static customCards.util.TextureLoader.getAnimatedCardTextures;
 import static customCards.util.TextureLoader.getCardTextureString;
 
-public abstract class AbstractDynamicCard extends AbstractDefaultCard {
-
-
+public abstract class BaseCard extends AbstractDefaultCard {
     public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
+
     protected CardStrings cardStrings;
 
     protected boolean upgradesDescription;
@@ -32,25 +30,12 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
     protected int blockUpgrade;
     protected int magicUpgrade;
 
-    public AbstractDynamicCard(final String id,
-                               final String img,
-                               final int cost,
-                               final CardType type,
-                               final CardColor color,
-                               final CardRarity rarity,
-                               final CardTarget target) {
-
-        super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
-
-    }
-
-    //
-    public AbstractDynamicCard(CardInfo cardInfo, boolean upgradesDescription) {
+    public BaseCard(CardInfo cardInfo, boolean upgradesDescription) {
         this(cardInfo.cardName, cardInfo.cardCost, cardInfo.cardType, cardInfo.cardTarget, cardInfo.cardRarity, upgradesDescription);
     }
 
-    public AbstractDynamicCard(String cardName, int cost, CardType cardType, CardTarget target, CardRarity rarity, boolean upgradesDescription) {
-        super(makeID(cardName), cardName, getCardTextureString(cardName), cost, languagePack.getCardStrings(makeID(cardName)).DESCRIPTION, cardType, COLOR, rarity, target);
+    public BaseCard(String cardName, int cost, CardType cardType, CardTarget target, CardRarity rarity, boolean upgradesDescription) {
+        super(makeID(cardName), cardName, getCardTextureString(cardName), cost, "", cardType, COLOR, rarity, target);
 
         cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
 
@@ -75,17 +60,23 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
         initializeCard();
     }
 
-    public void initializeCard() {
-        FontHelper.cardDescFont_N.getData().setScale(1.0f);
-        this.initializeTitle();
-        this.initializeDescription();
-    }
-
     public void loadFrames(String cardName, int frameCount, float frameRate) {
         try {
             AnimatedCardsPatch.load(this, frameCount, frameRate, getAnimatedCardTextures(cardName));
         } catch (Exception e) {
             DefaultMod.logger.error("Failed to load animated card image for " + cardName + ".");
         }
+    }
+
+
+    public void initializeCard() {
+        FontHelper.cardDescFont_N.getData().setScale(1.0f);
+        this.initializeTitle();
+        this.initializeDescription();
+    }
+
+    @Override
+    public void update() {
+        super.update();
     }
 }

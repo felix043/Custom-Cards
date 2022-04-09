@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
+import customCards.cards.CardInfo;
 import customCards.characters.SEP;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
@@ -15,6 +16,15 @@ import static customCards.DefaultMod.makeCardPath;
 import static customCards.DefaultMod.makeID;
 
 public class Bitconnect extends AbstractDynamicCard {
+
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("Bitconnect"),
+            "BitConnect", //C: Image loads, c: Text and description loads
+            3,
+            CardType.ATTACK,
+            CardTarget.ENEMY,
+            CardRarity.RARE
+    );
 
     // TEXT DECLARATION
     public static final String NAME = Bitconnect.class.getSimpleName();
@@ -32,7 +42,8 @@ public class Bitconnect extends AbstractDynamicCard {
     private static final int UPGRADE_PLUS_DMG = 1;
 
     public Bitconnect() {
-        super(ID, COST, NAME, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo, false);
+//        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         loadFrames(NAME, 150, 0.04F);
         baseDamage = DAMAGE;
         this.exhaust = true;
