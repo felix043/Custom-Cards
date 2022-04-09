@@ -4,35 +4,33 @@ import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.PlayTopCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class LostInTranslation extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(LostInTranslation.class.getSimpleName());
-    public static final String IMG = makeCardPath("LostInTranslation.png");
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("LostInTranslation"),
+            "LostInTranslation",
+            2,
+            2,
+            COLOR_SEPRED,
+            CardType.SKILL,
+            CardTarget.SELF,
+            CardRarity.COMMON
+    );
 
-    // STAT DECLARATION 	
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-
-    private static final int COST = 2;
     private static final int TIMES = 10;
 
     public LostInTranslation() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.tags.add(CardTags.EMPTY);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
     }
 
-    //todo double card and no exhaust (maybe ephereal)
-    //todo add bill gates card
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < TIMES; i++) {

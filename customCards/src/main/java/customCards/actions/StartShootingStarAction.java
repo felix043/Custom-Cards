@@ -3,9 +3,9 @@ package customCards.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import customCards.DefaultMod;
 
-public class AnimateAction extends AbstractGameAction {
+public class StartShootingStarAction extends AbstractGameAction {
 
-    public AnimateAction() {
+    public StartShootingStarAction() {
     }
 
     @Override

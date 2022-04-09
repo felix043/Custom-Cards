@@ -3,15 +3,14 @@ package customCards.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import customCards.DefaultMod;
 
-public class StopAnimation extends AbstractGameAction {
+public class StopShootingStarAction extends AbstractGameAction {
 
-    public StopAnimation() {
+    public StopShootingStarAction() {
     }
 
     @Override
     public void update() {
         DefaultMod.drawStellarUI = false;
         this.isDone = true;
-
     }
 }

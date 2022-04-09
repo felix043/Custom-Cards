@@ -67,11 +67,11 @@ public class Overworked extends CustomRelic implements CustomSavable<Integer>, O
 
     @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
-        if (Objects.equals(abstractCard.cardID, SkipWorkDay.ID)) {
+        if (Objects.equals(abstractCard.cardID, SkipWorkDay.cardInfo.cardId)) {
             setCounter(this.counter - 2);
             skippedDay = true;
         }
-        if (Objects.equals(abstractCard.cardID, BigBrainEnergy.ID)) {
+        if (Objects.equals(abstractCard.cardID, BigBrainEnergy.cardInfo.cardId)) {
             flash();
             setCounter(this.counter + 1);
         }

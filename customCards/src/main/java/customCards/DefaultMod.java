@@ -25,7 +25,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import customCards.actions.EPSanimate;
+import customCards.animations.EPSanimate;
 import customCards.cards.AbstractDefaultCard;
 import customCards.characters.SEP;
 import customCards.events.IdentityCrisisEvent;

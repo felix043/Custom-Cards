@@ -5,31 +5,32 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class Balanced extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(Balanced.class.getSimpleName());
-    public static final String IMG = makeCardPath("Balanced.png");
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-    // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ALL;
-    private static final CardType TYPE = CardType.ATTACK;
-    private static final int COST = 2;
-    private static final int UPGRADED_COST = 2;
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("Balanced"),
+            "Balanced",
+            2,
+            2,
+            COLOR_SEPRED,
+            CardType.ATTACK,
+            CardTarget.ALL,
+            CardRarity.COMMON
+    );
 
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 5;
 
     public Balanced() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
         baseDamage = DAMAGE;
     }
 
@@ -44,7 +45,7 @@ public class Balanced extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeBaseCost(cardInfo.upgradedCost);
             initializeDescription();
         }
     }

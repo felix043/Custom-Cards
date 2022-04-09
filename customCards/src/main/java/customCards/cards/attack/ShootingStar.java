@@ -8,36 +8,34 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
-import customCards.actions.AnimateAction;
-import customCards.actions.StopAnimation;
+import customCards.actions.StartShootingStarAction;
+import customCards.actions.StopShootingStarAction;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
-import static customCards.DefaultMod.makeCardPath;
 import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class ShootingStar extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(ShootingStar.class.getSimpleName());
-    public static final String IMG = makeCardPath("ShootingStar.png");
-
-    // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-
-    private static final int COST = 2;
-    private static final int UPGRADED_COST = 1;
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("ShootingStar"),
+            "ShootingStar",
+            2,
+            1,
+            COLOR_SEPRED,
+            CardType.ATTACK,
+            CardTarget.ALL_ENEMY,
+            CardRarity.RARE
+    );
 
     private static final int DAMAGE = 1;
     private static final int UPGRADE_PLUS_DMG = 10;
 
     public ShootingStar() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
         baseDamage = DAMAGE;
     }
 
@@ -45,7 +43,7 @@ public class ShootingStar extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         CardCrawlGame.sound.play(makeID("ShootingStar"));
         actionManager.addToBottom(new WaitAction(24f));
-        actionManager.addToBottom(new AnimateAction());
+        actionManager.addToBottom(new StartShootingStarAction());
         actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
         for (int i = 0; i < 36; i++) {
@@ -53,7 +51,7 @@ public class ShootingStar extends AbstractDynamicCard {
         }
 
         CardCrawlGame.sound.stop("ShootingStar");
-        actionManager.addToBottom(new StopAnimation());
+        actionManager.addToBottom(new StopShootingStarAction());
     }
 
     public void waitAndAttack(AbstractPlayer p) {
@@ -67,7 +65,7 @@ public class ShootingStar extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeBaseCost(cardInfo.upgradedCost);
             initializeDescription();
         }
     }

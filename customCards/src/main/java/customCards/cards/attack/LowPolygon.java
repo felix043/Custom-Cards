@@ -9,33 +9,32 @@ import com.megacrit.cardcrawl.actions.watcher.SkipEnemiesTurnAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class LowPolygon extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(LowPolygon.class.getSimpleName());
-    public static final String IMG = makeCardPath("LowPolygon.png");
-
-    // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-
-    private static final int COST = 2;
-    private static final int UPGRADED_COST = 1;
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("LowPolygon"),
+            "LowPolygon",
+            2,
+            1,
+            COLOR_SEPRED,
+            CardType.ATTACK,
+            CardTarget.ENEMY,
+            CardRarity.COMMON
+    );
 
     private static final int DAMAGE = 1;
     private static final int UPGRADE_PLUS_DMG = 1;
 
     public LowPolygon() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
         baseDamage = DAMAGE;
     }
 
@@ -54,7 +53,7 @@ public class LowPolygon extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeBaseCost(cardInfo.upgradedCost);
             initializeDescription();
         }
     }

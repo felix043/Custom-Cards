@@ -1,34 +1,28 @@
 package customCards.cards.curse;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
+import customCards.cards.CardInfo;
 
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class TelephoneService extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(TelephoneService.class.getSimpleName());
-    public static final String IMG = makeCardPath("TelephoneService.png");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTION = powerStrings.DESCRIPTIONS;
-
-    // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.STATUS;
-    public static final CardColor COLOR = AbstractCard.CardColor.COLORLESS;
-
-    private static final int COST = 1;
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("TelephoneService"),
+            "TelephoneService",
+            -2,
+            -2,
+            CardColor.COLORLESS,
+            CardType.STATUS,
+            CardTarget.SELF,
+            CardRarity.COMMON
+    );
 
     public TelephoneService() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
         this.exhaust = true;
     }
 

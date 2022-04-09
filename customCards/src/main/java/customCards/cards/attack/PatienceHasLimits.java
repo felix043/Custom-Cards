@@ -4,34 +4,33 @@ import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 
 import java.util.Random;
 
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class PatienceHasLimits extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(PatienceHasLimits.class.getSimpleName());
-    public static final String IMG = makeCardPath("PatienceHasLimits.png");
-
-    // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-
-    private static final int COST = 3;
-    private static final int UPGRADED_COST = 3;
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("PatienceHasLimits"),
+            "PatienceHasLimits",
+            3,
+            3,
+            COLOR_SEPRED,
+            CardType.ATTACK,
+            CardTarget.ENEMY,
+            CardRarity.COMMON
+    );
 
     private static final int TURNS = 15;
     private static int COUNTER = 0;
 
     public PatienceHasLimits() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
     }
 
     @Override
@@ -55,7 +54,7 @@ public class PatienceHasLimits extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeBaseCost(cardInfo.upgradedCost);
             initializeDescription();
         }
     }

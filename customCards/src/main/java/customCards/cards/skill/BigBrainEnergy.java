@@ -3,29 +3,29 @@ package customCards.cards.skill;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class BigBrainEnergy extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(BigBrainEnergy.class.getSimpleName());
-    public static final String IMG = makeCardPath("BigBrainEnergy.png");
-
-    // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-
-    private static final int COST = 1;
+    public final static CardInfo cardInfo = new CardInfo(
+            makeID("BigBrainEnergy"),
+            "BigBrainEnergy",
+            1,
+            1,
+            COLOR_SEPRED,
+            CardType.SKILL,
+            CardTarget.SELF,
+            CardRarity.COMMON
+    );
 
     public BigBrainEnergy() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
     }
 
     @Override

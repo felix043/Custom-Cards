@@ -4,33 +4,34 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 import customCards.orbs.*;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
 import static customCards.DefaultMod.COUNTER;
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class SkipWorkDay extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(SkipWorkDay.class.getSimpleName());
-    public static final String IMG = makeCardPath("SkipWorkDay.png");
+    public final static CardInfo cardInfo = new CardInfo(
+            makeID("SkipWorkDay"),
+            "SkipWorkDay",
+            1,
+            1,
+            COLOR_SEPRED,
+            CardType.SKILL,
+            CardTarget.SELF,
+            CardRarity.COMMON
+    );
 
-    // STAT DECLARATION 	
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-
-    private static final int COST = 1;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 5;
 
     public SkipWorkDay() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
         baseBlock = BLOCK;
     }
 

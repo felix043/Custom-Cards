@@ -46,9 +46,6 @@ public class SEP extends CustomPlayer {
         public static CardLibrary.LibraryType LIBRARY_SEPRED;
     }
 
-    // =============== CHARACTER ENUMERATORS  =================
-
-
     // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;

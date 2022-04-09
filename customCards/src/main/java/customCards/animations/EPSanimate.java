@@ -1,4 +1,4 @@
-package customCards.actions;
+package customCards.animations;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,17 +12,6 @@ import static customCards.DefaultMod.makeAnimationPath;
 import static customCards.util.TextureLoader.getTexture;
 
 public class EPSanimate {
-
-    private static final Texture ae = getTexture(makeAnimationPath("ae.png"));
-    private static final Texture ect = getTexture(makeAnimationPath("ect.png"));
-    private static final Texture ecv = getTexture(makeAnimationPath("ecv.png"));
-    private static final Texture edm = getTexture(makeAnimationPath("edm.png"));
-    private static final Texture eds = getTexture(makeAnimationPath("eds.png"));
-    private static final Texture one = getTexture(makeAnimationPath("oneoffix.png"));
-    private static final Texture ptcpro = getTexture(makeAnimationPath("ptcpro.png"));
-    private static final Texture ptcstc = getTexture(makeAnimationPath("ptcstc.png"));
-    private static final Texture pte = getTexture(makeAnimationPath("pte.png"));
-    private static final Texture stc = getTexture(makeAnimationPath("stc.png"));
 
     private static final float RIGHT_X = Settings.WIDTH + 100 * Settings.scale;
     private static final float LEFT_X = -100 * Settings.scale;
@@ -40,16 +29,16 @@ public class EPSanimate {
         appPositions = new ArrayList<>();
 
         allTextures = new ArrayList<>();
-        allTextures.add(ae);
-        allTextures.add(ect);
-        allTextures.add(ecv);
-        allTextures.add(edm);
-        allTextures.add(eds);
-        allTextures.add(one);
-        allTextures.add(ptcpro);
-        allTextures.add(ptcstc);
-        allTextures.add(pte);
-        allTextures.add(stc);
+        allTextures.add(getTexture(makeAnimationPath("ae.png")));
+        allTextures.add(getTexture(makeAnimationPath("ect.png")));
+        allTextures.add(getTexture(makeAnimationPath("ecv.png")));
+        allTextures.add(getTexture(makeAnimationPath("edm.png")));
+        allTextures.add(getTexture(makeAnimationPath("eds.png")));
+        allTextures.add(getTexture(makeAnimationPath("oneoffix.png")));
+        allTextures.add(getTexture(makeAnimationPath("ptcpro.png")));
+        allTextures.add(getTexture(makeAnimationPath("ptcstc.png")));
+        allTextures.add(getTexture(makeAnimationPath("pte.png")));
+        allTextures.add(getTexture(makeAnimationPath("stc.png")));
 
         random = new Random();
     }
@@ -74,7 +63,6 @@ public class EPSanimate {
         }
 
         appPositions.removeIf(star -> star.isDone && star.renderColor.a <= 0.0f);
-
 
         for (StarPosition pos : appPositions) {
             float x = MathUtils.lerp(LEFT_X, RIGHT_X, (pos.progress + 1) / 2.0f);

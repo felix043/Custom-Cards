@@ -1,20 +1,23 @@
 package customCards.cards;
 
-
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import static com.megacrit.cardcrawl.cards.AbstractCard.*;
 
 public class CardInfo {
     public String cardId;
-    public String cardName;
+    public String imgName;
     public int cardCost;
-    public AbstractCard.CardType cardType;
-    public AbstractCard.CardTarget cardTarget;
-    public AbstractCard.CardRarity cardRarity;
+    public int upgradedCost;
+    public CardColor cardColor;
+    public CardType cardType;
+    public CardTarget cardTarget;
+    public CardRarity cardRarity;
 
-    public CardInfo(String cardId, String cardName, int cardCost, AbstractCard.CardType cardType, AbstractCard.CardTarget cardTarget, AbstractCard.CardRarity cardRarity) {
+    public CardInfo(String cardId, String imgName, int cardCost, int upgradedCost, CardColor cardColor, CardType cardType, CardTarget cardTarget, CardRarity cardRarity) {
         this.cardId = cardId;
-        this.cardName = cardName;
+        this.imgName = imgName;
         this.cardCost = cardCost;
+        this.upgradedCost = upgradedCost;
+        this.cardColor = cardColor;
         this.cardType = cardType;
         this.cardTarget = cardTarget;
         this.cardRarity = cardRarity;

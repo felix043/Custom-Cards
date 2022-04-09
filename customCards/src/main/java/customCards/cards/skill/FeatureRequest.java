@@ -5,28 +5,29 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.PhantasmalPower;
-import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
-import customCards.characters.SEP;
+import customCards.cards.CardInfo;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
-import static customCards.DefaultMod.makeCardPath;
+import static customCards.DefaultMod.makeID;
+import static customCards.characters.SEP.Enums.COLOR_SEPRED;
+import static customCards.util.TextureLoader.getCardTextureString;
 
 public class FeatureRequest extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-    public static final String ID = DefaultMod.makeID(FeatureRequest.class.getSimpleName());
-    public static final String IMG = makeCardPath("FeatureRequest.png");
-    public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
-
-    // STAT DECLARATION
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    private static final int COST = 0;
+    private final static CardInfo cardInfo = new CardInfo(
+            makeID("FeatureRequest"),
+            "FeatureRequest",
+            0,
+            0,
+            COLOR_SEPRED,
+            CardType.SKILL,
+            CardTarget.SELF,
+            CardRarity.COMMON
+    );
 
     public FeatureRequest() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
         this.tags.add(CardTags.EMPTY);
     }
 
