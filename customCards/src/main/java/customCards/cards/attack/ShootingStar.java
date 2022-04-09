@@ -1,7 +1,6 @@
 package customCards.cards.attack;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.AnimateJumpAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -44,20 +43,23 @@ public class ShootingStar extends AbstractDynamicCard {
         CardCrawlGame.sound.play(makeID("ShootingStar"));
         actionManager.addToBottom(new WaitAction(24f));
         actionManager.addToBottom(new StartShootingStarAction());
-        actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
-        for (int i = 0; i < 36; i++) {
+        for (int i = 0; i < 37; i++) {
             waitAndAttack(p);
         }
 
-        CardCrawlGame.sound.stop("ShootingStar");
+        actionManager.addToBottom(new AbstractGameAction() {
+            @Override
+            public void update() {
+                CardCrawlGame.sound.stop(makeID("ShootingStar"));
+            }
+        });
         actionManager.addToBottom(new StopShootingStarAction());
     }
 
     public void waitAndAttack(AbstractPlayer p) {
-        actionManager.addToBottom(new WaitAction(0.48f));
-        actionManager.addToBottom(new AnimateJumpAction(p));
         actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        actionManager.addToBottom(new WaitAction(0.48f));
     }
 
     @Override

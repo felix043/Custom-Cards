@@ -11,8 +11,6 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
 
     public static final CardColor COLOR = SEP.Enums.COLOR_SEPRED;
 
-
-
     public AbstractDynamicCard(final String id,
                                final String img,
                                final int cost,

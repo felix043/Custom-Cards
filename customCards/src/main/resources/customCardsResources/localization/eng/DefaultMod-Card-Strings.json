@@ -97,7 +97,7 @@
   },
   "customCards:PatienceHasLimits": {
     "NAME": "Patience has limits",
-    "DESCRIPTION": "If 15 or more turns have passed, kill all enemies NL (1% chance to backfire)"
+    "DESCRIPTION": "If 10 or more turns have passed, kill all enemies NL (1% chance to backfire)"
   },
   "customCards:TheProtagonist": {
     "NAME": "The Protagonist(?)",

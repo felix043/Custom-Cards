@@ -52,9 +52,8 @@ public class DefaultMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-        AddAudioSubscriber, PreRoomRenderSubscriber, PreStartGameSubscriber, OnStartBattleSubscriber, PostBattleSubscriber {
-    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
-    // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
+        AddAudioSubscriber, PreRoomRenderSubscriber, PreStartGameSubscriber, PostBattleSubscriber {
+
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
     // Colors (RGB)
@@ -528,11 +527,6 @@ public class DefaultMod implements
     @Override
     public void receivePreStartGame() {
         drawStellarUI = false;
-    }
-
-    @Override
-    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
-//        drawStellarUI = true;
     }
 
     @Override
