@@ -26,7 +26,7 @@ public class Blob extends AbstractDynamicCard {
             2,
             COLOR_SEPRED,
             CardType.ATTACK,
-            CardTarget.ENEMY,
+            CardTarget.ALL_ENEMY,
             CardRarity.COMMON
     );
 

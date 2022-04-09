@@ -1,8 +1,6 @@
 package customCards.characters;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
-import basemod.abstracts.CustomSavableRaw;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -29,7 +27,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import static customCards.DefaultMod.*;
 
@@ -135,8 +132,6 @@ public class SEP extends CustomPlayer {
     }
 
     public void rotateDay() {
-        Map<String, CustomSavableRaw> saveFields = BaseMod.getSaveFields();
-        CustomSavableRaw count = saveFields.get("COUNT");
         switch (COUNTER) {
             case 1:
                 channelOrb(new MondayOrb());

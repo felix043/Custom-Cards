@@ -396,6 +396,8 @@ public class DefaultMod implements
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), SEP.Enums.COLOR_SEPRED);
         BaseMod.addRelicToCustomPool(new RandomRelic(), SEP.Enums.COLOR_SEPRED);
         BaseMod.addRelicToCustomPool(new Overworked(), SEP.Enums.COLOR_SEPRED);
+        BaseMod.addRelicToCustomPool(new GuraDum(), SEP.Enums.COLOR_SEPRED);
+        BaseMod.addRelicToCustomPool(new BiMirLaufts(), SEP.Enums.COLOR_SEPRED);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);

@@ -23,7 +23,7 @@ public class Bitconnect extends AbstractDynamicCard {
             3,
             COLOR_SEPRED,
             CardType.ATTACK,
-            CardTarget.ENEMY,
+            CardTarget.ALL_ENEMY,
             CardRarity.RARE
     );
 

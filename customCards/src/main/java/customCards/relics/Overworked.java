@@ -31,7 +31,6 @@ import static customCards.DefaultMod.makeRelicPath;
 public class Overworked extends CustomRelic implements CustomSavable<Integer>, OnCardUseSubscriber {
 
     private static int hoursOverworked;
-    private static boolean skippedDay;
 
     // ID, images, text.
     public static final String ID = DefaultMod.makeID("Overworked");
@@ -56,29 +55,30 @@ public class Overworked extends CustomRelic implements CustomSavable<Integer>, O
         } else if (this.counter >= 5) {
             flash();
             AbstractDungeon.player.draw(1);
-        } else if (this.counter < -5) {
+        } else if (this.counter <= -5) {
             flash();
-            actionManager.addToBottom(new ExhaustAction(3, true));
+            actionManager.addToBottom(new ExhaustAction(1, true));
         }
-        if (!skippedDay) {
-            setCounter(this.counter + 1);
-            skippedDay = false;
-        }
+        setCounter(this.counter + 2);
     }
 
     @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
         if (Objects.equals(abstractCard.cardID, SkipWorkDay.cardInfo.cardId)) {
+            if (this.counter <= -10) {
+                return;
+            }
             setCounter(this.counter - 2);
-            skippedDay = true;
         }
         if (Objects.equals(abstractCard.cardID, BigBrainEnergy.cardInfo.cardId)) {
             flash();
             setCounter(this.counter + 1);
         }
         if (Objects.equals(abstractCard.cardID, DistortedReality.cardInfo.cardId)) {
-            flash();
-            setCounter(this.counter - 3);
+            if (this.counter <= -10) {
+                return;
+            }
+            setCounter(this.counter - 2);
         }
     }
 
