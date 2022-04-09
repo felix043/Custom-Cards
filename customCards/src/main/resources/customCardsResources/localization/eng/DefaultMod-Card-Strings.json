@@ -123,5 +123,9 @@
   "customCards:ShootingStar": {
     "NAME": "Starscourge",
     "DESCRIPTION": "Finishing move of Sep"
+  },
+  "customCards:DistortedReality": {
+    "NAME": "Distorted Reality",
+    "DESCRIPTION": "Gain !B! Block NL Skip 3 work days"
   }
 }

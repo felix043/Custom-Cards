@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.cards.AbstractDynamicCard;
 import customCards.cards.CardInfo;
-import customCards.powers.TheCouncilPower;
+import customCards.cards.power.impl.TheCouncilPower;
 
 import static customCards.DefaultMod.makeID;
 import static customCards.characters.SEP.Enums.COLOR_SEPRED;

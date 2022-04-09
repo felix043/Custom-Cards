@@ -13,8 +13,8 @@ public class TelephoneService extends AbstractDynamicCard {
     private final static CardInfo cardInfo = new CardInfo(
             makeID("TelephoneService"),
             "TelephoneService",
-            -2,
-            -2,
+            1,
+            1,
             CardColor.COLORLESS,
             CardType.STATUS,
             CardTarget.SELF,

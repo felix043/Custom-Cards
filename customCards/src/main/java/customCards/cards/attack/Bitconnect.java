@@ -27,15 +27,12 @@ public class Bitconnect extends AbstractDynamicCard {
             CardRarity.RARE
     );
 
-    // TEXT DECLARATION
-    public static final String NAME = Bitconnect.class.getSimpleName();
-    // STAT DECLARATION
     private static final int DAMAGE = 1;
     private static final int UPGRADE_PLUS_DMG = 1;
 
     public Bitconnect() {
         super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
-        loadFrames("BitConnecta", 150, 0.04F);
+        loadFrames(Bitconnect.class.getSimpleName(), 150, 0.04F);
         baseDamage = DAMAGE;
         this.exhaust = true;
     }

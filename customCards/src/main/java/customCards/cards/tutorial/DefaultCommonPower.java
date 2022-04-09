@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
+import customCards.cards.power.impl.CommonPower;
 import customCards.characters.SEP;
-import customCards.powers.CommonPower;
 
 import static customCards.DefaultMod.makeCardPath;
 

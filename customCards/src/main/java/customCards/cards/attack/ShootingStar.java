@@ -2,6 +2,7 @@ package customCards.cards.attack;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateJumpAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -41,6 +42,7 @@ public class ShootingStar extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        actionManager.addToBottom(new TalkAction(p, "With the power of friendship and EPS apps", 5.0f, 3.0f));
         CardCrawlGame.sound.play(makeID("ShootingStar"));
         actionManager.addToBottom(new WaitAction(24f));
         actionManager.addToBottom(new StartShootingStarAction());

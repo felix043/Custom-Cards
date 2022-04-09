@@ -28,7 +28,7 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
 import static customCards.DefaultMod.makeRelicOutlinePath;
 import static customCards.DefaultMod.makeRelicPath;
 
-public class Overworked extends CustomRelic implements CustomSavable<Integer>, OnCardUseSubscriber {
+public class OverworkedPlus extends CustomRelic implements CustomSavable<Integer>, OnCardUseSubscriber {
 
     private static int hoursOverworked;
     private static boolean skippedDay;
@@ -39,26 +39,37 @@ public class Overworked extends CustomRelic implements CustomSavable<Integer>, O
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Overworked.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("OverworkedOutline.png"));
 
-    public Overworked() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+    public OverworkedPlus() {
+        super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.MAGICAL);
         this.counter = 0;
         BaseMod.subscribe(this);
+    }
+
+    @Override
+    public void onEquip() {
+        AbstractDungeon.player.energy.energyMaster += 1;
+        relicsToRemoveOnStart.add("customCards:Overworked");
+    }
+
+    @Override
+    public void onUnequip() {
+        AbstractDungeon.player.energy.energyMaster -= 1;
     }
 
     @Override
     public void atTurnStart() {
         if (this.counter >= 10) {
             flash();
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 4; i++) {
                 actionManager.addToBottom(new PlayTopCardAction(getCurrRoom().monsters.getRandomMonster(null, true, cardRandomRng), true));
             }
             actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Confused(), 2, true, true));
         } else if (this.counter >= 5) {
             flash();
-            AbstractDungeon.player.draw(1);
+            AbstractDungeon.player.draw(2);
         } else if (this.counter < -5) {
             flash();
-            actionManager.addToBottom(new ExhaustAction(3, true));
+            actionManager.addToBottom(new ExhaustAction(2, true));
         }
         if (!skippedDay) {
             setCounter(this.counter + 1);
@@ -111,6 +122,6 @@ public class Overworked extends CustomRelic implements CustomSavable<Integer>, O
 
     @Override
     public AbstractRelic makeCopy() {
-        return new Overworked();
+        return new OverworkedPlus();
     }
 }

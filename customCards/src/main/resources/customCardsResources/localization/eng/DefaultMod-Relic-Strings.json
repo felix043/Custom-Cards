@@ -39,10 +39,31 @@
     ]
   },
   "customCards:Overworked": {
-    "NAME": "Overworked",
+    "NAME": "Overworked (Intern)",
     "FLAVOR": "Why you running?!",
     "DESCRIPTIONS": [
       "Gain 1 point every not skipped day NL #y-5: Exhaust 3 cards at random NL #y5: Draw 1 card NL #y10: Play 3 cards and gain 2 Confused"
+    ]
+  },
+  "customCards:OverworkedPlus": {
+    "NAME": "Overworked (Werkstudent)",
+    "FLAVOR": "Why you running?!",
+    "DESCRIPTIONS": [
+      "Gain 1 point every not skipped day NL Gain 1 [E] NL #y-5: Exhaust 2 cards at random NL #y5: Draw 2 card NL #y10: Play 4 cards and gain 2 Confused"
+    ]
+  },
+  "customCards:BiMirLaufts": {
+    "NAME": "Bi mier laufts",
+    "FLAVOR": "Sometimes it just doesn't work",
+    "DESCRIPTIONS": [
+      "Gain 1 [E] NL Works once per battle"
+    ]
+  },
+  "customCards:GuraDum": {
+    "NAME": "GuraDum",
+    "FLAVOR": "1, 2 and 5",
+    "DESCRIPTIONS": [
+      "Certified Gura moment. NL Random takes 10 customcards:Emotional_Damage NL Works once per battle"
     ]
   }
 }

@@ -67,7 +67,7 @@ public class DefaultMod implements
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
 
-    public static final String SEP_SHOULDER = "customCardsResources/images/char/SEP/SEPcharacter.png";
+    public static final String SEP_SHOULDER = "customCardsResources/images/char/SEP/SEPshoulder.png";
 
     // =============== INPUT TEXTURE LOCATION =================
     public static final String SEP_CORPSE = "customCardsResources/images/char/SEP/SEPcorpse.png";
@@ -260,6 +260,7 @@ public class DefaultMod implements
         BaseMod.addAudio(makeID("WasupWasup"), makeAudioPath("WasupWasup.ogg"));
         BaseMod.addAudio(makeID("ShootingStar"), makeAudioPath("ShootingStar.ogg"));
         BaseMod.addAudio(makeID("EmotionalDamage"), makeAudioPath("EmotionalDamage.ogg"));
+        BaseMod.addAudio(makeID("GuraDum"), makeAudioPath("GuraDum.ogg"));
     }
 
     @Override

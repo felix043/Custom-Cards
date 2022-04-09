@@ -1,4 +1,4 @@
-package customCards.powers;
+package customCards.cards.power.impl;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;

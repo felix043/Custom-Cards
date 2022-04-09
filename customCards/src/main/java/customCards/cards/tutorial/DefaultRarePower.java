@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.DefaultMod;
 import customCards.cards.AbstractDynamicCard;
+import customCards.cards.power.impl.RarePower;
 import customCards.characters.SEP;
-import customCards.powers.RarePower;
 
 import static customCards.DefaultMod.makeCardPath;
 

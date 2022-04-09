@@ -186,9 +186,6 @@ public class SEP extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
         retVal.add(Overworked.ID);
 
         // Mark relics as seen - makes it visible in the compendium immediately

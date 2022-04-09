@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import customCards.cards.AbstractDynamicCard;
 import customCards.cards.CardInfo;
-import customCards.powers.TheProtagonistPower;
+import customCards.cards.power.impl.TheProtagonistPower;
 
 import static customCards.DefaultMod.makeID;
 import static customCards.characters.SEP.Enums.COLOR_SEPRED;
@@ -27,8 +27,7 @@ public class TheProtagonist extends AbstractDynamicCard {
     );
 
     public static String UPGRADE_DESCRIPTION;
-    private static final int MAGIC = 30;
-    private static final int UPGRADE_MAGIC = 20;
+    private static final int MAGIC = 1;
 
     public TheProtagonist() {
         super(cardInfo.cardId, getCardTextureString(cardInfo.imgName), cardInfo.cardCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
@@ -36,17 +35,15 @@ public class TheProtagonist extends AbstractDynamicCard {
         UPGRADE_DESCRIPTION = CardCrawlGame.languagePack.getCardStrings(cardInfo.cardId).UPGRADE_DESCRIPTION;
     }
 
-    //todo fix this
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new TheProtagonistPower(p, p, magicNumber), 2));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new TheProtagonistPower(p, p, magicNumber), 1));
     }
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
